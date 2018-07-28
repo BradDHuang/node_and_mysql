@@ -1,0 +1,73 @@
+
+
+MySQL
+    • Relational Data Model
+        • Object / Table
+        • Relationships
+        • 1:1, 1:M, M:M
+    • Storage
+        • Binary
+    • Operations
+        • CRUD
+    • Access
+        • GUI (Graphical user interface)
+        • ODBC (Open Database Connectivity), JDBC (Java Database Connectivity), …
+    e.g.
+    1. Load package
+        • const mysql = require(‘mysql’);
+    2. Configure connection
+        • const connection = mysql.createConnection()
+    3. Connect
+        • connection.connect()
+    4. Issue query
+        • connection.query(sql, callback)
+        // In callback, first parameter is error
+    5. Disconnect
+        • connection.end()
+        
+MongoDB
+    • Document Data Model
+        • JSON
+    • Storage
+        • Text files
+    • Operations
+        • Search / Read
+        • CRUD
+    • Access
+        • GUI (Graphical user interface)
+    e.g.
+    1. Load package
+        • const mongoose = require(‘mongoose’);
+    2. Configure connection
+        • mongoose.connect(URL)
+    3. Define object model
+        • const Schema = mongoose.Schema()
+        • const yourclass = new Schema()
+    4. Use inherited persistent methods
+        
+MONGODB CRUD OPERATIONS
+• Create
+    • db.collection.insert( <document> )
+    • db.collection.save( <document> )
+    • db.collection.update( <query>, <update>, { upsert: true } )
+• Read
+    • db.collection.find( <query>, <projection> )
+    • db.collection.findOne( <query>, <projection> )
+• Update
+    • db.collection.update( <query>, <update>, <options> )
+• Delete
+    • db.collection.remove( <query>, <justOne> ) 
+    
+ACCESSING DATABASE - API
+Basic
+    • No data model mapping
+    • DB operations directly executed
+    • DDL (Data Definition Languages)
+    • DML (Data Manipulation Language)
+    • Query
+ORM (Object-relational mapping) / ODM (Object Data Manager)
+    • Mapping of data models to object oriented
+    • Generation of basic CRUD operations
+    • All persistent methods are inherited from a root class, no code is necessary
+    
+
