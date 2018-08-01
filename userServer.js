@@ -21,7 +21,8 @@ var connection =  mysql.createConnection({
 // var user = {id: 6, name: "6th", age: 34, sex: "male", title: "RA"};
 // Can be dynamic with using var.
 
-app.get("/app/users/getall", (req, res) => {
+// app.get("/app/users/getall", (req, res) => {
+app.get("/api/users", (req, res) => {
     let q = 'SELECT * FROM users';
     connection.query(q, function(err, rows, fields) {
         if (err) throw err;
@@ -29,7 +30,8 @@ app.get("/app/users/getall", (req, res) => {
     });
 });
 
-app.get("/app/users/getone/:id", (req, res) => {
+// app.get("/app/users/getone/:id", (req, res) => {
+app.get("/api/users/:id", (req, res) => {
     console.log("Getting user with id " + req.params.id);
     // let id = req.body.id;
     // if (res.statusCode >= 100 && res.statusCode < 600){
@@ -47,7 +49,8 @@ app.get("/app/users/getone/:id", (req, res) => {
     });
 });
 
-app.post("/app/users/insertone", (req, res) => {
+// app.post("/app/users/insertone", (req, res) => {
+app.post("/api/users", (req, res) => {
     let userone = {
         id: req.body.id,
 		name: req.body.name,
@@ -59,11 +62,13 @@ app.post("/app/users/insertone", (req, res) => {
     connection.query('INSERT INTO users SET?', userone, function(err, rows) {
         if (err) throw err;
         // res.send('The users records are: ', rows);
-        res.redirect("/app/users/getall");
+        // res.redirect("/app/users/getall");
+        res.redirect("/api/users");
     });
 });
 
-app.delete("/app/users/deleteone/:id", (req, res) => {
+// app.delete("/app/users/deleteone/:id", (req, res) => {
+app.delete("/api/users/:id", (req, res) => {
     console.log("Deleting user with id " + req.params.id);
     // if (res.statusCode >= 100 && res.statusCode < 600){
     //     res.status(res.statusCode);
@@ -80,7 +85,8 @@ app.delete("/app/users/deleteone/:id", (req, res) => {
     
     connection.query(strQuery, function(err, rows, fields) {
         if (err) throw err;
-        res.redirect("/app/users/getall");
+        // res.redirect("/app/users/getall");
+        res.redirect("/api/users");
         // console.log(fields);
     });
 });
